@@ -11,10 +11,11 @@ export default {
           600: "#27304a",
         },
         alerta: {
-          verde: "#22c55e",   // G1 
-          amarelo: "#eab308", // G2-G3
-          laranja: "#f97316", // G4
-          vermelho: "#ef4444",// G5
+          verde: "#22c55e",            // Calmo, G1
+          amarelo: "#eab308",          // G2
+          laranja: "#f97316",          // G3
+          vermelho: "#ef4444",         // G4
+          "vermelho-escuro": "#b91c1c",// G5
         },
       },
       fontFamily: {

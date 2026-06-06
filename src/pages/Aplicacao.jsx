@@ -1,4 +1,7 @@
 
+import ClassificadorKp from "../components/ClassificadorKp.jsx";
+import CalculadoraCME from "../components/CalculadoraCME.jsx";
+
 const passos = [
   { num: "1", titulo: "Abra o painel", texto: "A página inicial mostra a atividade solar atual, lida em tempo real da NOAA." },
   { num: "2", titulo: "Leia a cor", texto: "Verde é calmo. Amarelo, laranja e vermelho indicam atenção crescente." },
@@ -41,6 +44,9 @@ export default function Aplicacao() {
           </div>
         ))}
       </div>
+
+      <ClassificadorKp />
+      <CalculadoraCME />
 
       <h2 className="mt-12 font-display text-2xl text-slate-100">
         Dicas de proteção por nível

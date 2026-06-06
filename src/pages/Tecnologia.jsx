@@ -1,19 +1,4 @@
-
-
-const escala = [
-  { nivel: "G1", kp: "Kp 5", efeito: "Quase nada perceptível", cor: "verde" },
-  { nivel: "G2", kp: "Kp 6", efeito: "Leve degradação de GPS", cor: "verde" },
-  { nivel: "G3", kp: "Kp 7", efeito: "GPS degradado, falhas de rádio", cor: "amarelo" },
-  { nivel: "G4", kp: "Kp 8", efeito: "Satélites comprometidos, quedas de energia", cor: "laranja" },
-  { nivel: "G5", kp: "Kp 9", efeito: "Apagões em cascata, internet global afetada", cor: "vermelho" },
-];
-
-const corTexto = {
-  verde: "text-alerta-verde",
-  amarelo: "text-alerta-amarelo",
-  laranja: "text-alerta-laranja",
-  vermelho: "text-alerta-vermelho",
-};
+import EscalaCompleta from "../components/EscalaCompleta.jsx";
 
 export default function Tecnologia() {
   return (
@@ -52,28 +37,7 @@ export default function Tecnologia() {
       <h2 className="mt-12 font-display text-2xl text-slate-100">
         Escala de intensidade
       </h2>
-      <div className="mt-5 overflow-x-auto rounded-xl border border-space-600">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-space-700 font-display text-slate-200">
-            <tr>
-              <th className="px-4 py-3">Nível</th>
-              <th className="px-4 py-3">Índice Kp</th>
-              <th className="px-4 py-3">O que é afetado</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-space-600 bg-space-800">
-            {escala.map((linha) => (
-              <tr key={linha.nivel}>
-                <td className={`px-4 py-3 font-display font-bold ${corTexto[linha.cor]}`}>
-                  {linha.nivel}
-                </td>
-                <td className="px-4 py-3 text-slate-300">{linha.kp}</td>
-                <td className="px-4 py-3 text-slate-300">{linha.efeito}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <EscalaCompleta />
 
       <h2 className="mt-12 font-display text-2xl text-slate-100">
         Como prevemos a chegada
