@@ -7,10 +7,12 @@ import Tecnologia from "./pages/Tecnologia.jsx";
 import Objetivos from "./pages/Objetivos.jsx";
 import Beneficios from "./pages/Beneficios.jsx";
 import Aplicacao from "./pages/Aplicacao.jsx";
+import Estrelas from "./components/Estrelas.jsx";
 
 export default function App() {
   return (
     <div className="flex min-h-screen flex-col">
+      <Estrelas />
       <Header />
       <main className="flex-1">
         <Routes>
