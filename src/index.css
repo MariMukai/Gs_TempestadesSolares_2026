@@ -5,3 +5,17 @@
 body {
   @apply bg-space-900 text-slate-200 font-body;
 }
+
+@keyframes cadente {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(1);
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(300px, 300px) scale(0.3);
+  }
+}

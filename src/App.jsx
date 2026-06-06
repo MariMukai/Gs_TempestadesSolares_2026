@@ -9,11 +9,13 @@ import Beneficios from "./pages/Beneficios.jsx";
 import Aplicacao from "./pages/Aplicacao.jsx";
 import Estrelas from "./components/Estrelas.jsx";
 import Transicao from "./components/Transicao.jsx";
+import EstrelaCadente from "./components/Estrela.jsx";
 
 export default function App() {
   return (
     <div className="flex min-h-screen flex-col">
       <Estrelas />
+      <EstrelaCadente />
       <Header />
       <main className="flex-1">
   <Transicao>
