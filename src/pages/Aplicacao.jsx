@@ -1,6 +1,7 @@
 
 import ClassificadorKp from "../components/ClassificadorKp.jsx";
 import CalculadoraCME from "../components/CalculadoraCME.jsx";
+import SimuladorTempestade from "../components/SimuladorTempestade.jsx";
 
 const passos = [
   { num: "1", titulo: "Abra o painel", texto: "A página inicial mostra a atividade solar atual, lida em tempo real da NOAA." },
@@ -47,6 +48,7 @@ export default function Aplicacao() {
 
       <ClassificadorKp />
       <CalculadoraCME />
+      <SimuladorTempestade />
 
       <h2 className="mt-12 font-display text-2xl text-slate-100">
         Dicas de proteção por nível
