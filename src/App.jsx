@@ -8,6 +8,7 @@ import Objetivos from "./pages/Objetivos.jsx";
 import Beneficios from "./pages/Beneficios.jsx";
 import Aplicacao from "./pages/Aplicacao.jsx";
 import Estrelas from "./components/Estrelas.jsx";
+import Transicao from "./components/Transicao.jsx";
 
 export default function App() {
   return (
@@ -15,14 +16,16 @@ export default function App() {
       <Estrelas />
       <Header />
       <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<Problema />} />
-          <Route path="/tecnologia" element={<Tecnologia />} />
-          <Route path="/objetivos" element={<Objetivos />} />
-          <Route path="/beneficios" element={<Beneficios />} />
-          <Route path="/aplicacao" element={<Aplicacao />} />
-        </Routes>
-      </main>
+  <Transicao>
+    <Routes>
+      <Route path="/" element={<Problema />} />
+      <Route path="/tecnologia" element={<Tecnologia />} />
+      <Route path="/objetivos" element={<Objetivos />} />
+      <Route path="/beneficios" element={<Beneficios />} />
+      <Route path="/aplicacao" element={<Aplicacao />} />
+    </Routes>
+  </Transicao>
+</main>
       <Footer />
     </div>
   );

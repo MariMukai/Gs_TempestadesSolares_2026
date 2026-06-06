@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { buscarAlertas } from "../services/dadosNoaa.js";
 import AlertCard from "../components/AlertCard.jsx";
@@ -15,6 +16,7 @@ export default function Problema() {
 
   return (
     <>
+      {/* HERO de abertura */}
       <section className="relative flex min-h-[80vh] flex-col items-center justify-center overflow-hidden px-6 text-center">
         <div className="pointer-events-none absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-alerta-laranja/20 blur-3xl" />
 
@@ -46,6 +48,7 @@ export default function Problema() {
         </a>
       </section>
 
+      {/* CONTEUDO */}
       <section id="agora" className="mx-auto max-w-6xl px-6 py-12">
         <h2 className="font-display text-2xl text-alerta-laranja">
           Atividade solar agora
