@@ -1,4 +1,5 @@
 import EscalaCompleta from "../components/EscalaCompleta.jsx";
+import Timeline from "../components/Timeline.jsx";
 
 export default function Tecnologia() {
   return (
@@ -76,6 +77,14 @@ export default function Tecnologia() {
           </p>
         </div>
       </div>
+      <h2 className="mt-12 font-display text-2xl text-slate-100">
+        Eventos que marcaram a história
+      </h2>
+      <p className="mt-2 max-w-3xl text-slate-300">
+        Tempestades solares não são teoria. Veja os eventos reais que mostram por
+        que um sistema de alerta importa.
+      </p>
+      <Timeline />
     </section>
   );
 }

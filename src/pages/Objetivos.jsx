@@ -1,19 +1,21 @@
-
 const niveis = [
   {
     cor: "amarelo",
+    icone: "⏱",
     titulo: "Alerta amarelo",
     quando: "CME detectada",
     texto: "Chegada estimada em X dias. A intensidade ainda está sendo calculada. Fique atento.",
   },
   {
     cor: "laranja",
+    icone: "🔋",
     titulo: "Alerta laranja",
     quando: "Intensidade G3 confirmada",
     texto: "Chegada em X horas. O GPS pode falhar. Carregue seus dispositivos.",
   },
   {
     cor: "vermelho",
+    icone: "⚠",
     titulo: "Alerta vermelho",
     quando: "G4 ou G5 confirmado",
     texto: "Impacto em X minutos. Desligue equipamentos sensíveis imediatamente.",
@@ -21,9 +23,9 @@ const niveis = [
 ];
 
 const corClasses = {
-  amarelo: "border-alerta-amarelo text-alerta-amarelo",
-  laranja: "border-alerta-laranja text-alerta-laranja",
-  vermelho: "border-alerta-vermelho text-alerta-vermelho",
+  amarelo: "border-alerta-amarelo text-alerta-amarelo hover:shadow-[0_0_20px_rgba(234,179,8,0.4)]",
+  laranja: "border-alerta-laranja text-alerta-laranja hover:shadow-[0_0_20px_rgba(249,115,22,0.4)]",
+  vermelho: "border-alerta-vermelho text-alerta-vermelho hover:shadow-[0_0_20px_rgba(239,68,68,0.4)]",
 };
 
 export default function Objetivos() {
@@ -61,6 +63,7 @@ export default function Objetivos() {
           os dias.
         </p>
       </div>
+      
     </section>
   );
 }
