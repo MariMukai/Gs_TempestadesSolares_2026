@@ -31,7 +31,7 @@ export default function EstrelaCadente() {
   return (
     <div
       key={estrela.id}
-      className="pointer-events-none fixed -z-18"
+      className="pointer-events-none fixed -z-10"
       style={{ top: estrela.top, left: estrela.left }}
     >
       <span

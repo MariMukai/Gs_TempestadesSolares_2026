@@ -2,8 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --cor-fundo-principal: #020617;
+  --cor-texto-principal: #f8fafc;
+  --cor-destaque: #f97316;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
 body {
   @apply bg-space-900 text-slate-200 font-body;
+  background-color: var(--cor-fundo-principal);
+  color: var(--cor-texto-principal);
+}
+
+@media (max-width: 640px) {
+  h1.font-display {
+    font-size: 1.5rem !important;
+    line-height: 1.2;
+  }
 }
 
 @keyframes cadente {
