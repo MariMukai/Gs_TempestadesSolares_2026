@@ -1,12 +1,19 @@
-
 import { classesPorCor } from "../utils/classificar.js";
+
+const glowPorCor = {
+  verde: "shadow-[0_0_15px_rgba(34,197,94,0.25)] hover:shadow-[0_0_25px_rgba(34,197,94,0.5)]",
+  amarelo: "shadow-[0_0_15px_rgba(234,179,8,0.25)] hover:shadow-[0_0_25px_rgba(234,179,8,0.5)]",
+  laranja: "shadow-[0_0_15px_rgba(249,115,22,0.3)] hover:shadow-[0_0_25px_rgba(249,115,22,0.6)]",
+  vermelho: "shadow-[0_0_15px_rgba(239,68,68,0.3)] hover:shadow-[0_0_25px_rgba(239,68,68,0.6)]",
+};
 
 export default function AlertCard({ alerta }) {
   const c = classesPorCor[alerta.cor];
+  const glow = glowPorCor[alerta.cor];
 
   return (
     <article
-      className={`animate-surgir rounded-xl border ${c.borda} ${c.fundo} p-5 shadow-lg transition-transform hover:-translate-y-1`}
+      className={`animate-surgir rounded-xl border ${c.borda} ${c.fundo} ${glow} p-5 transition-all duration-300 hover:-translate-y-1`}
     >
       <div className="flex items-center justify-between">
         <span className={`font-display text-2xl font-bold ${c.texto}`}>

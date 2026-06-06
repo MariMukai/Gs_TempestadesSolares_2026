@@ -44,6 +44,7 @@ export default {
         surgir: "surgir 0.6s ease-out forwards",
         brilhar: "brilhar 3s ease-in-out infinite",
         piscar: "piscar 4s ease-in-out infinite",
+        
       },
     },
   },
