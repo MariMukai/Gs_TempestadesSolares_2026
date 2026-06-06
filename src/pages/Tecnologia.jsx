@@ -1,5 +1,6 @@
 import Timeline from "../components/Timeline";
 
+
 const escala = [
   { nivel: "G1", kp: "Kp 5", efeito: "Quase nada perceptível", cor: "verde" },
   { nivel: "G2", kp: "Kp 6", efeito: "Leve degradação de GPS", cor: "verde" },
