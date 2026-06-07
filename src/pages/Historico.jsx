@@ -122,7 +122,7 @@ export default function Historico() {
                   {registro.bz !== undefined && (
                     <p>
                       <span className="text-slate-400">Bz: </span>
-                      {registro.bz}
+                      {registro.bz} nT
                     </p>
                   )}
                 </div>
