@@ -13,7 +13,7 @@ export default function EscalaCompleta() {
         return (
           <div
             key={n.nivel}
-            className={`rounded-xl border ${c.borda} ${c.fundo} p-5`}
+            className={`min-w-0 rounded-xl border ${c.borda} ${c.fundo} p-5`}
           >
             <div className="flex items-center justify-between">
               <span className={`font-display text-2xl font-bold ${c.texto}`}>
@@ -28,18 +28,18 @@ export default function EscalaCompleta() {
               {n.rotulo}
             </h3>
 
-            <p className="mt-3 text-sm text-slate-300">
+            <p className="mt-3 break-words text-sm text-slate-300">
               <span className="font-semibold text-slate-200">Efeito: </span>
               {n.descricao}
             </p>
 
-            <p className="mt-2 text-sm text-slate-300">
+            <p className="mt-2 break-words text-sm text-slate-300">
               <span className="font-semibold text-slate-200">Ação: </span>
               {n.acao}
             </p>
 
             {n.exemplos && (
-              <p className={`mt-3 border-t border-space-600 pt-3 text-xs ${c.texto}`}>
+              <p className={`mt-3 break-words border-t border-space-600 pt-3 text-xs ${c.texto}`}>
                 Exemplos históricos: {n.exemplos}
               </p>
             )}

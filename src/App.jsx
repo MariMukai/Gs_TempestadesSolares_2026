@@ -7,6 +7,7 @@ import Tecnologia from "./pages/Tecnologia.jsx";
 import Objetivos from "./pages/Objetivos.jsx";
 import Beneficios from "./pages/Beneficios.jsx";
 import Aplicacao from "./pages/Aplicacao.jsx";
+import Ferramentas from "./pages/Ferramentas.jsx";
 import Estrelas from "./components/Estrelas.jsx";
 import Transicao from "./components/Transicao.jsx";
 import EstrelaCadente from "./components/Estrela.jsx";
@@ -25,6 +26,7 @@ export default function App() {
       <Route path="/objetivos" element={<Objetivos />} />
       <Route path="/beneficios" element={<Beneficios />} />
       <Route path="/aplicacao" element={<Aplicacao />} />
+      <Route path="/ferramentas" element={<Ferramentas />} />
     </Routes>
   </Transicao>
 </main>

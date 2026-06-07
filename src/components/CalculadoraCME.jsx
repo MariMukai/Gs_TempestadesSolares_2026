@@ -45,11 +45,11 @@ export default function CalculadoraCME() {
   }
 
   return (
-    <div className="mt-8 rounded-xl border border-space-600 bg-space-800 p-6">
-      <h3 className="font-display text-lg text-slate-100">
+    <div className="mt-8 max-w-full overflow-hidden rounded-xl border border-space-600 bg-space-800 p-4 sm:p-6">
+      <h3 className="break-words font-display text-lg text-slate-100">
         Calculadora de chegada de CME
       </h3>
-      <p className="mt-1 text-sm text-slate-400">
+      <p className="mt-1 break-words text-sm text-slate-400">
         Informe a velocidade de uma ejeção de massa coronal (km/s) para estimar
         o tempo de chegada à Terra.
       </p>
@@ -63,7 +63,7 @@ export default function CalculadoraCME() {
           onChange={(e) => setValor(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Ex: 800"
-          className="w-36 rounded-lg border border-space-600 bg-space-900 px-4 py-2 font-display text-slate-100 placeholder-slate-500 focus:border-alerta-laranja focus:outline-none"
+          className="w-36 max-w-full rounded-lg border border-space-600 bg-space-900 px-4 py-2 font-display text-slate-100 placeholder-slate-500 focus:border-alerta-laranja focus:outline-none"
         />
         <button
           onClick={calcular}
@@ -89,7 +89,7 @@ export default function CalculadoraCME() {
       )}
 
       {resultado && (
-        <div className="mt-5 rounded-xl border border-alerta-laranja bg-alerta-laranja/10 p-5">
+        <div className="mt-5 rounded-xl border border-alerta-laranja bg-alerta-laranja/10 p-4 sm:p-5">
           <p className="text-xs uppercase tracking-wide text-slate-400">
             Tempo estimado de chegada
           </p>
@@ -100,14 +100,14 @@ export default function CalculadoraCME() {
             Aproximadamente {resultado.horasTotal.toFixed(1)} horas
           </p>
 
-          <dl className="mt-4 flex justify-between border-t border-space-600 pt-3 text-xs text-slate-400">
+          <dl className="mt-4 grid gap-3 border-t border-space-600 pt-3 text-xs text-slate-400 sm:grid-cols-2">
             <div>
               <dt>Velocidade</dt>
               <dd className="font-display text-base text-alerta-laranja">
                 {resultado.velocidade} km/s
               </dd>
             </div>
-            <div className="text-right">
+            <div className="sm:text-right">
               <dt>Classificação</dt>
               <dd className="font-display text-base text-slate-200 capitalize">
                 {resultado.classificacao}

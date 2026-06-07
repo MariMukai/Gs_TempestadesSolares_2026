@@ -1,7 +1,4 @@
-
-import ClassificadorKp from "../components/ClassificadorKp.jsx";
-import CalculadoraCME from "../components/CalculadoraCME.jsx";
-import SimuladorTempestade from "../components/SimuladorTempestade.jsx";
+import { Link } from "react-router-dom";
 
 const passos = [
   { num: "1", titulo: "Abra o painel", texto: "A página inicial mostra a atividade solar atual, lida em tempo real da NOAA." },
@@ -25,42 +22,54 @@ const corBorda = {
 
 export default function Aplicacao() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-12">
-      <h1 className="font-display text-4xl font-bold text-slate-100">
+    <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+      <h1 className="break-words font-display text-4xl font-bold text-slate-100">
         Aplicação no dia a dia
       </h1>
-      <p className="mt-4 max-w-3xl text-lg text-slate-300">
+      <p className="mt-4 max-w-3xl break-words text-lg text-slate-300">
         Usar o Solar Alert System é simples. Em três passos você sabe o que está
         acontecendo no Sol e o que fazer a respeito.
       </p>
 
       <div className="mt-10 grid gap-5 md:grid-cols-3">
         {passos.map((p) => (
-          <div key={p.num} className="rounded-xl border border-space-600 bg-space-800 p-6">
+          <div key={p.num} className="min-w-0 rounded-xl border border-space-600 bg-space-800 p-5 sm:p-6">
             <span className="font-display text-3xl font-bold text-alerta-laranja">
               {p.num}
             </span>
             <h3 className="mt-2 font-display text-lg text-slate-100">{p.titulo}</h3>
-            <p className="mt-2 text-sm text-slate-300">{p.texto}</p>
+            <p className="mt-2 break-words text-sm text-slate-300">{p.texto}</p>
           </div>
         ))}
       </div>
 
-      <ClassificadorKp />
-      <CalculadoraCME />
-      <SimuladorTempestade />
+      <div className="mt-10 min-w-0 rounded-xl border border-alerta-laranja bg-alerta-laranja/10 p-5 sm:p-6">
+        <h2 className="break-words font-display text-xl text-alerta-laranja">
+          Quer testar os alertas na prática?
+        </h2>
+        <p className="mt-2 max-w-3xl break-words text-sm text-slate-300">
+          Acesse as ferramentas interativas para classificar índices Kp, calcular
+          o tempo de chegada de uma CME e simular tempestades solares.
+        </p>
+        <Link
+          to="/ferramentas"
+          className="mt-4 inline-block rounded-lg bg-alerta-laranja px-5 py-2 font-display text-sm font-bold text-space-900 transition-opacity hover:opacity-80"
+        >
+          Abrir ferramentas
+        </Link>
+      </div>
 
-      <h2 className="mt-12 font-display text-2xl text-slate-100">
+      <h2 className="mt-12 break-words font-display text-2xl text-slate-100">
         Dicas de proteção por nível
       </h2>
       <div className="mt-5 space-y-3">
         {dicas.map((d) => (
           <div
             key={d.cor}
-            className={`rounded-xl border-l-4 bg-space-800 p-5 ${corBorda[d.cor]}`}
+            className={`min-w-0 rounded-xl border-l-4 bg-space-800 p-5 ${corBorda[d.cor]}`}
           >
             <h3 className="font-display text-lg text-slate-100">{d.titulo}</h3>
-            <p className="mt-1 text-sm text-slate-300">{d.texto}</p>
+            <p className="mt-1 break-words text-sm text-slate-300">{d.texto}</p>
           </div>
         ))}
       </div>

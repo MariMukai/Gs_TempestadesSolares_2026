@@ -1,7 +1,7 @@
 
 import { useMemo } from "react";
 
-export default function Estrelas({ quantidade = 80 }) {
+export default function Estrelas({ quantidade = 110 }) {
   const estrelas = useMemo(() => {
     return Array.from({ length: quantidade }, () => ({
       top: `${Math.random() * 100}%`,

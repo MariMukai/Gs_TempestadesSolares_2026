@@ -17,11 +17,11 @@ export default function Problema() {
   return (
     <>
       {/* HERO de abertura */}
-      <section className="relative flex min-h-[80vh] flex-col items-center justify-center overflow-hidden px-6 text-center">
+      <section className="relative flex min-h-[80vh] flex-col items-center justify-center overflow-hidden px-4 text-center sm:px-6">
         <div className="pointer-events-none absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-alerta-laranja/20 blur-3xl" />
 
         <h1
-          className="animate-surgir font-display text-4xl font-black leading-tight text-slate-100 opacity-0 md:text-6xl"
+          className="animate-surgir break-words font-display text-4xl font-black leading-tight text-slate-100 opacity-0 md:text-6xl"
           style={{ animationDelay: "0.1s" }}
         >
           Quando o Sol ataca,
@@ -30,7 +30,7 @@ export default function Problema() {
         </h1>
 
         <p
-          className="animate-surgir mt-6 max-w-2xl text-lg text-slate-300 opacity-0"
+          className="animate-surgir mt-6 max-w-2xl break-words text-lg text-slate-300 opacity-0"
           style={{ animationDelay: "0.3s" }}
         >
           Tempestades solares já derrubaram redes de energia e GPS. A NASA e a NOAA
@@ -49,8 +49,8 @@ export default function Problema() {
       </section>
 
       {/* CONTEUDO */}
-      <section id="agora" className="mx-auto max-w-6xl px-6 py-12">
-        <h2 className="font-display text-2xl text-alerta-laranja">
+      <section id="agora" className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+        <h2 className="break-words font-display text-2xl text-alerta-laranja">
           Atividade solar agora
         </h2>
 
