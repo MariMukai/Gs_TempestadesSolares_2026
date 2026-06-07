@@ -10,6 +10,9 @@ const glowPorCor = {
 export default function AlertCard({ alerta }) {
   const c = classesPorCor[alerta.cor];
   const glow = glowPorCor[alerta.cor];
+  const titulo = alerta.nivel === "Calmo"
+    ? "Atividade calma"
+    : `Tempestade ${alerta.rotulo}`;
 
   return (
     <article
@@ -22,8 +25,8 @@ export default function AlertCard({ alerta }) {
         <span className={`h-3 w-3 rounded-full ${c.bolinha} animate-pulso`} />
       </div>
 
-      <h3 className="mt-2 font-display text-lg text-slate-100">
-        Tempestade {alerta.rotulo}
+      <h3 className="mt-2 break-words font-display text-lg text-slate-100">
+        {titulo}
       </h3>
       <p className="mt-1 break-words text-sm text-slate-300">{alerta.descricao}</p>
 

@@ -24,10 +24,16 @@ export async function buscarAlertas() {
     const resposta = await fetch(URL_KP);
     if (!resposta.ok) throw new Error("Resposta nao OK da NOAA");
     const dados = await resposta.json();
-    return dados.slice(1).slice(-8).reverse().map(normalizar);
+    return {
+      alertas: dados.slice(1).slice(-8).reverse().map(normalizar),
+      origem: "noaa",
+    };
   } catch (erro) {
     console.warn("Falha na API da NOAA, usando dados locais:", erro);
-    return kpFallback.slice().reverse().map(normalizar);
+    return {
+      alertas: kpFallback.slice().reverse().map(normalizar),
+      origem: "fallback",
+    };
   }
 }
 

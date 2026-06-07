@@ -1,18 +1,101 @@
 
 import { useEffect, useState } from "react";
-import { buscarAlertas } from "../services/dadosNoaa.js";
+import { buscarAlertas, buscarBz, buscarVento } from "../services/dadosNoaa.js";
 import AlertCard from "../components/AlertCard.jsx";
+import { classesPorCor } from "../utils/classificar.js";
+import { adicionarRegistroHistorico } from "../utils/historico.js";
+
+function formatarHorario(horario) {
+  const data = new Date(horario);
+
+  if (isNaN(data.getTime())) {
+    return "Horário indisponível";
+  }
+
+  return data.toLocaleString("pt-BR");
+}
+
+function normalizarNumero(valor) {
+  return Number.isFinite(valor) ? valor : null;
+}
 
 export default function Problema() {
   const [alertas, setAlertas] = useState([]);
+  const [origem, setOrigem] = useState(null);
+  const [vento, setVento] = useState(null);
+  const [bz, setBz] = useState(null);
   const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState(false);
+  const [leituraSalva, setLeituraSalva] = useState(false);
+
+  async function carregarDados() {
+    setCarregando(true);
+    setErro(false);
+    setLeituraSalva(false);
+
+    try {
+      const [dadosAlertas, ventoAtual, bzAtual] = await Promise.all([
+        buscarAlertas(),
+        buscarVento(),
+        buscarBz(),
+      ]);
+
+      if (!dadosAlertas.alertas || dadosAlertas.alertas.length === 0) {
+        throw new Error("Nenhum alerta disponivel");
+      }
+
+      setAlertas(dadosAlertas.alertas);
+      setOrigem(dadosAlertas.origem);
+      setVento(normalizarNumero(ventoAtual));
+      setBz(normalizarNumero(bzAtual));
+    } catch (falha) {
+      console.warn("Falha ao carregar dados solares:", falha);
+      setAlertas([]);
+      setOrigem(null);
+      setVento(null);
+      setBz(null);
+      setErro(true);
+    } finally {
+      setCarregando(false);
+    }
+  }
 
   useEffect(() => {
-    buscarAlertas().then((dados) => {
-      setAlertas(dados);
-      setCarregando(false);
-    });
+    carregarDados();
   }, []);
+
+  const leituraAtual = alertas[0];
+  const leiturasRecentes = alertas.slice(1);
+  const classesLeituraAtual = leituraAtual ? classesPorCor[leituraAtual.cor] : null;
+  const textoOrigem = origem === "noaa"
+    ? "NOAA ao vivo"
+    : "dados locais de referência";
+
+  function salvarLeituraAtual() {
+    if (!leituraAtual || leituraSalva) {
+      return;
+    }
+
+    const registro = {
+      tipo: "Leitura atual",
+      origem: origem === "noaa" ? "NOAA" : "Fallback local",
+      kp: leituraAtual.kp,
+      nivel: leituraAtual.nivel,
+      cor: leituraAtual.cor,
+      descricao: leituraAtual.descricao,
+    };
+
+    if (vento !== null) {
+      registro.velocidade = vento;
+    }
+
+    if (bz !== null) {
+      registro.bz = bz;
+    }
+
+    adicionarRegistroHistorico(registro);
+    setLeituraSalva(true);
+  }
 
   return (
     <>
@@ -54,19 +137,116 @@ export default function Problema() {
           Atividade solar agora
         </h2>
 
-        {carregando ? (
-          <p className="mt-8 animate-pulso text-slate-400">Buscando dados da NOAA...</p>
-        ) : (
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {alertas.map((alerta, i) => (
-              <div
-                key={i}
-                className="animate-surgir opacity-0"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                <AlertCard alerta={alerta} />
+        {carregando && alertas.length === 0 ? (
+          <p className="mt-8 animate-pulso text-slate-400">
+            Carregando dados solares em tempo real...
+          </p>
+        ) : erro ? (
+          <div className="mt-8 rounded-xl border border-alerta-vermelho bg-alerta-vermelho/10 p-5 text-sm text-slate-300">
+            <p>Não foi possível carregar os dados no momento.</p>
+            <p className="mt-1">Tente atualizar novamente.</p>
+            <button
+              onClick={carregarDados}
+              className="mt-4 rounded-lg bg-alerta-laranja px-5 py-2 font-display text-sm font-bold text-space-900 transition-opacity hover:opacity-80"
+            >
+              Atualizar dados
+            </button>
+          </div>
+        ) : leituraAtual && classesLeituraAtual ? (
+          <>
+            {origem === "fallback" && (
+              <p className="mt-5 rounded-xl border border-alerta-amarelo bg-alerta-amarelo/10 p-4 text-sm text-slate-300">
+                Não foi possível acessar a NOAA agora. Exibindo dados locais de referência.
+              </p>
+            )}
+
+            <div className={`mt-8 rounded-xl border ${classesLeituraAtual.borda} ${classesLeituraAtual.fundo} p-5 sm:p-6`}>
+              <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+                <div className="min-w-0">
+                  <p className="text-xs uppercase tracking-wide text-slate-400">
+                    Leitura solar atual
+                  </p>
+                  <h3 className={`mt-2 font-display text-4xl font-bold ${classesLeituraAtual.texto}`}>
+                    Kp {leituraAtual.kp.toFixed(2)}
+                  </h3>
+                  <p className="mt-2 break-words font-display text-xl text-slate-100">
+                    Nível geomagnético: {leituraAtual.nivel}
+                  </p>
+                  <p className="mt-3 max-w-3xl break-words text-sm text-slate-300">
+                    {leituraAtual.descricao}
+                  </p>
+                </div>
+
+                <div className="min-w-0 rounded-lg border border-space-600 bg-space-900/60 p-4 text-sm text-slate-300 lg:w-72">
+                  <p>
+                    <span className="text-slate-400">Fonte: </span>
+                    {textoOrigem}
+                  </p>
+                  <p className="mt-2">
+                    <span className="text-slate-400">Última atualização: </span>
+                    {formatarHorario(leituraAtual.horario)}
+                  </p>
+                </div>
               </div>
-            ))}
+            </div>
+
+            <div className="mt-5 grid gap-5 md:grid-cols-2">
+              <div className="min-w-0 rounded-xl border border-space-600 bg-space-800 p-5">
+                <p className="font-display text-lg text-alerta-laranja">Vento solar</p>
+                <p className="mt-2 font-display text-3xl text-slate-100">
+                  {vento !== null ? `${vento.toFixed(1)} km/s` : "Indisponível"}
+                </p>
+              </div>
+              <div className="min-w-0 rounded-xl border border-space-600 bg-space-800 p-5">
+                <p className="font-display text-lg text-alerta-laranja">Campo magnético Bz</p>
+                <p className="mt-2 font-display text-3xl text-slate-100">
+                  {bz !== null ? `${bz.toFixed(2)} nT` : "Indisponível"}
+                </p>
+                <p className="mt-2 break-words text-sm text-slate-400">
+                  Valores negativos podem intensificar o impacto geomagnético.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              <button
+                onClick={carregarDados}
+                disabled={carregando}
+                className="rounded-lg bg-alerta-laranja px-5 py-2 font-display text-sm font-bold text-space-900 transition-opacity hover:opacity-80 disabled:opacity-50"
+              >
+                {carregando ? "Atualizando..." : "Atualizar dados"}
+              </button>
+              <button
+                onClick={salvarLeituraAtual}
+                disabled={!leituraAtual || leituraSalva}
+                className="rounded-lg border border-alerta-laranja px-5 py-2 font-display text-sm text-alerta-laranja transition-opacity hover:opacity-70 disabled:opacity-40"
+              >
+                {leituraSalva ? "Leitura salva" : "Salvar leitura atual"}
+              </button>
+            </div>
+
+            {leiturasRecentes.length > 0 && (
+              <>
+                <h3 className="mt-12 break-words font-display text-xl text-slate-100">
+                  Leituras recentes de Kp
+                </h3>
+                <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                  {leiturasRecentes.map((alerta, i) => (
+                    <div
+                      key={`${alerta.horario}-${i}`}
+                      className="animate-surgir opacity-0"
+                      style={{ animationDelay: `${i * 0.1}s` }}
+                    >
+                      <AlertCard alerta={alerta} />
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </>
+        ) : (
+          <div className="mt-8 rounded-xl border border-alerta-vermelho bg-alerta-vermelho/10 p-5 text-sm text-slate-300">
+            Não foi possível carregar os dados no momento.
           </div>
         )}
       </section>
