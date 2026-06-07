@@ -10,6 +10,7 @@ const paginas = [
   { rota: "/beneficios", nome: "Benefícios" },
   { rota: "/aplicacao", nome: "Aplicação" },
   { rota: "/ferramentas", nome: "Ferramentas" },
+  { rota: "/historico", nome: "Histórico" },
 ];
 
 export default function Header() {
@@ -53,7 +54,7 @@ export default function Header() {
             SOLAR<span className="text-slate-200">ALERT</span>
           </span>
         </NavLink>
-        <ul className="flex w-full min-w-0 flex-wrap justify-center gap-0 text-[8px] sm:gap-1 sm:text-sm md:w-auto md:justify-start md:gap-2">
+        <ul className="flex w-full min-w-0 flex-wrap justify-center gap-0 text-[7px] sm:gap-1 sm:text-sm md:w-auto md:justify-start md:gap-2">
           {paginas.map((p) => (
             <li key={p.rota}>
               <NavLink
