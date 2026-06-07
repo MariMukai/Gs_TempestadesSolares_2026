@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { carregarHistorico, limparHistorico } from "../utils/historico.js";
+import Timeline from "../components/Timeline.jsx";
 
 function formatarData(dataHora) {
   const data = new Date(dataHora);
@@ -133,6 +134,16 @@ export default function Historico() {
           })}
         </div>
       )}
+
+      <section className="mt-14 border-t border-space-600 pt-10">
+        <h2 className="break-words font-display text-2xl text-alerta-laranja">
+          Eventos históricos de referência
+        </h2>
+        <p className="mt-2 max-w-3xl break-words text-slate-300">
+          Conheça algumas tempestades solares marcantes registradas ao longo da história.
+        </p>
+        <Timeline />
+      </section>
     </section>
   );
 }

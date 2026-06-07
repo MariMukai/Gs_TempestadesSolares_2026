@@ -1,8 +1,12 @@
 const eventos = [
-  { ano: "1859", nome: "Evento Carrington", texto: "O mais intenso já registrado. Telégrafos pegaram fogo em todo o mundo.", cor: "vermelho" },
-  { ano: "1989", nome: "Tempestade de Quebec", texto: "6 milhões de pessoas sem energia por 9 horas no Canadá. Prejuízo de bilhões.", cor: "laranja" },
-  { ano: "2003", nome: "Tempestade de Halloween", texto: "Satélites danificados e falhas de rádio em todo o Atlântico.", cor: "amarelo" },
-  { ano: "2024", nome: "Tempestade G5", texto: "A mais intensa em décadas. Afetou GPS e comunicações; auroras visíveis nos trópicos.", cor: "vermelho" },
+  { ano: "1859", nome: "Evento Carrington", texto: "Uma das tempestades geomagnéticas mais intensas já registradas. Sistemas de telégrafo sofreram falhas e incêndios.", cor: "vermelho" },
+  { ano: "1921", nome: "New York Railroad Storm", texto: "Tempestade geomagnética muito intensa que afetou sistemas telegráficos e infraestruturas associadas às ferrovias.", cor: "vermelho" },
+  { ano: "1972", nome: "Grande tempestade solar de agosto", texto: "Evento extremamente rápido, com tempo de trânsito entre o Sol e a Terra de aproximadamente 14,6 horas.", cor: "laranja" },
+  { ano: "1989", nome: "Quebec", texto: "Tempestade geomagnética associada a um apagão de aproximadamente nove horas no sistema elétrico de Quebec.", cor: "laranja" },
+  { ano: "2000", nome: "Bastille Day Event", texto: "Grande evento solar ocorrido em 14 de julho de 2000, com tempestade geomagnética extrema e auroras intensas.", cor: "vermelho" },
+  { ano: "2003", nome: "Tempestade de Halloween", texto: "Sequência de tempestades solares intensas que afetou GPS, comunicações, satélites e outros sistemas tecnológicos.", cor: "amarelo" },
+  { ano: "2012", nome: "CME de julho: quase impacto na Terra", texto: "Evento extremo observado pela sonda STEREO-A. Não atingiu diretamente a Terra, mas demonstrou o risco de uma tempestade intensa.", cor: "vermelho" },
+  { ano: "2024", nome: "Tempestade G5", texto: "Tempestade geomagnética extrema observada em maio de 2024, com auroras visíveis em regiões incomuns.", cor: "vermelho" },
 ];
 
 const corClasses = {

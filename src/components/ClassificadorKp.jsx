@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { classificarTempestade, classesPorCor } from "../utils/classificar.js";
 import { validarKp } from "../utils/calculos.js";
+import { adicionarRegistroHistorico } from "../utils/historico.js";
 
 export default function ClassificadorKp() {
   const [valor, setValor] = useState("");
@@ -14,8 +15,18 @@ export default function ClassificadorKp() {
       setResultado(null);
       return;
     }
+    const classificacao = classificarTempestade(validacao.kp);
+
     setErro(null);
-    setResultado({ kp: validacao.kp, ...classificarTempestade(validacao.kp) });
+    setResultado({ kp: validacao.kp, ...classificacao });
+    adicionarRegistroHistorico({
+      tipo: "Classificação manual",
+      origem: "Usuário",
+      kp: validacao.kp,
+      nivel: classificacao.nivel,
+      cor: classificacao.cor,
+      descricao: classificacao.descricao,
+    });
   }
 
   function handleKeyDown(e) {
