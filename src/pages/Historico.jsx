@@ -51,6 +51,9 @@ export default function Historico() {
           <p className="mt-4 max-w-3xl break-words text-lg text-slate-300">
             Os registros ficam salvos somente neste dispositivo e navegador.
           </p>
+          <p className="mt-2 max-w-3xl break-words text-sm text-slate-400">
+            Não há login e os dados não são compartilhados com outros usuários.
+          </p>
         </div>
 
         <button
@@ -135,12 +138,41 @@ export default function Historico() {
         </div>
       )}
 
+      <section className="mt-10 rounded-xl border border-space-600 bg-space-800 p-5">
+        <h2 className="font-display text-xl text-slate-100">
+          O que pode aparecer aqui?
+        </h2>
+        <div className="mt-4 grid gap-4 md:grid-cols-3">
+          <div className="min-w-0">
+            <h3 className="font-display text-sm text-alerta-laranja">Classificação manual</h3>
+            <p className="mt-1 text-sm text-slate-300">
+              Resultado gerado ao testar um índice Kp.
+            </p>
+          </div>
+          <div className="min-w-0">
+            <h3 className="font-display text-sm text-alerta-laranja">Simulação educativa</h3>
+            <p className="mt-1 text-sm text-slate-300">
+              Cenário fictício criado nas ferramentas.
+            </p>
+          </div>
+          <div className="min-w-0">
+            <h3 className="font-display text-sm text-alerta-laranja">Leitura atual</h3>
+            <p className="mt-1 text-sm text-slate-300">
+              Registro salvo manualmente a partir da página inicial.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="mt-14 border-t border-space-600 pt-10">
         <h2 className="break-words font-display text-2xl text-alerta-laranja">
           Eventos históricos de referência
         </h2>
         <p className="mt-2 max-w-3xl break-words text-slate-300">
           Conheça algumas tempestades solares marcantes registradas ao longo da história.
+        </p>
+        <p className="mt-2 max-w-3xl break-words text-sm text-slate-400">
+          Os eventos abaixo são referências educativas e não fazem parte do seu histórico local.
         </p>
         <Timeline />
       </section>

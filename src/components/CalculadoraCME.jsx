@@ -53,6 +53,10 @@ export default function CalculadoraCME() {
         Informe a velocidade de uma ejeção de massa coronal (km/s) para estimar
         o tempo de chegada à Terra.
       </p>
+      <p className="mt-1 text-xs text-slate-500">Exemplo: 800 km/s</p>
+      <p className="mt-2 break-words text-xs text-slate-500">
+        A velocidade estima o tempo de chegada, mas não determina sozinha a intensidade do impacto.
+      </p>
 
       <div className="mt-4 flex flex-wrap gap-3">
         <input

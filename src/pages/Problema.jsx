@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { buscarAlertas, buscarBz, buscarVento } from "../services/dadosNoaa.js";
 import AlertCard from "../components/AlertCard.jsx";
 import { classesPorCor } from "../utils/classificar.js";
@@ -232,6 +233,38 @@ export default function Problema() {
 
             {leiturasRecentes.length > 0 && (
               <>
+                <section className="mt-12">
+                  <h3 className="break-words font-display text-xl text-alerta-laranja">
+                    Como interpretar os dados?
+                  </h3>
+                  <div className="mt-5 grid gap-4 md:grid-cols-3">
+                    <div className="min-w-0 rounded-xl border border-space-600 bg-space-800 p-4">
+                      <h4 className="font-display text-base text-slate-100">Índice Kp</h4>
+                      <p className="mt-2 break-words text-sm text-slate-300">
+                        Mede a atividade geomagnética. A partir de Kp 5, começa a escala de tempestades G1-G5.
+                      </p>
+                    </div>
+                    <div className="min-w-0 rounded-xl border border-space-600 bg-space-800 p-4">
+                      <h4 className="font-display text-base text-slate-100">Vento solar</h4>
+                      <p className="mt-2 break-words text-sm text-slate-300">
+                        Mostra a velocidade das partículas vindas do Sol e ajuda a estimar a chegada de eventos solares.
+                      </p>
+                    </div>
+                    <div className="min-w-0 rounded-xl border border-space-600 bg-space-800 p-4">
+                      <h4 className="font-display text-base text-slate-100">Campo magnético Bz</h4>
+                      <p className="mt-2 break-words text-sm text-slate-300">
+                        Quando está negativo, pode favorecer impactos mais intensos. Ele não determina tudo sozinho.
+                      </p>
+                    </div>
+                  </div>
+                  <Link
+                    to="/tecnologia"
+                    className="mt-4 inline-block font-display text-sm text-alerta-laranja transition-opacity hover:opacity-70"
+                  >
+                    Entenda melhor como a tecnologia funciona
+                  </Link>
+                </section>
+
                 <h3 className="mt-12 break-words font-display text-xl text-slate-100">
                   Leituras recentes de Kp
                 </h3>

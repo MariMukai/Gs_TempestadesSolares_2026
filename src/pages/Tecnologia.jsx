@@ -35,6 +35,16 @@ export default function Tecnologia() {
         </div>
       </div>
 
+      <div className="mt-10 rounded-xl border border-alerta-laranja bg-alerta-laranja/10 p-5">
+        <h2 className="font-display text-xl text-alerta-laranja">Em resumo</h2>
+        <p className="mt-2 max-w-4xl break-words text-sm text-slate-300">
+          O índice Kp classifica o nível do alerta. A velocidade ajuda a estimar o tempo de chegada de uma CME. O campo Bz ajuda a entender o potencial de impacto. Nenhum valor isolado explica sozinho todo o evento.
+        </p>
+        <p className="mt-2 break-words text-sm text-slate-400">
+          Os dados técnicos são obtidos por meio da NOAA Space Weather Prediction Center.
+        </p>
+      </div>
+
       <h2 className="mt-12 break-words font-display text-2xl text-slate-100">
         Escala de intensidade
       </h2>

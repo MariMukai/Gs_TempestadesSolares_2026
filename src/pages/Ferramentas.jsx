@@ -9,7 +9,7 @@ export default function Ferramentas() {
         Ferramentas interativas
       </h1>
       <p className="mt-4 max-w-3xl break-words text-lg text-slate-300">
-        Recursos educativos para interpretar dados de clima espacial.
+        Use os recursos abaixo para entender como o sistema transforma dados técnicos de clima espacial em informações mais simples.
       </p>
 
       <div className="mt-10 space-y-10">
@@ -17,6 +17,9 @@ export default function Ferramentas() {
           <h2 className="break-words font-display text-xl text-alerta-laranja md:text-2xl">
             Classificação geomagnética
           </h2>
+          <p className="mt-2 max-w-3xl break-words text-sm text-slate-400">
+            Digite um índice Kp para descobrir o nível do alerta e compreender os possíveis impactos. Exemplo: Kp 7.5.
+          </p>
           <ClassificadorKp />
         </div>
 
@@ -24,6 +27,9 @@ export default function Ferramentas() {
           <h2 className="break-words font-display text-xl text-alerta-laranja md:text-2xl">
             Previsão de chegada
           </h2>
+          <p className="mt-2 max-w-3xl break-words text-sm text-slate-400">
+            Informe a velocidade de uma CME para estimar quanto tempo ela levaria para chegar à Terra. Exemplo: 800 km/s.
+          </p>
           <CalculadoraCME />
         </div>
 
@@ -31,6 +37,9 @@ export default function Ferramentas() {
           <h2 className="break-words font-display text-xl text-alerta-laranja md:text-2xl">
             Simulação educativa
           </h2>
+          <p className="mt-2 max-w-3xl break-words text-sm text-slate-400">
+            Gere um cenário fictício para praticar a interpretação dos alertas solares.
+          </p>
           <SimuladorTempestade />
         </div>
       </div>

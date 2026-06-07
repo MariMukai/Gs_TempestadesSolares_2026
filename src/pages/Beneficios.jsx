@@ -10,7 +10,7 @@ const diferenciais = [
   { titulo: "Dado real da NOAA", texto: "A maioria dos projetos inventa dados. Nós usamos uma API pública real atualizada a cada minuto." },
   { titulo: "Problema global", texto: "Tempestades solares afetam GPS, internet e energia de continentes inteiros ao mesmo tempo." },
   { titulo: "Lacuna comprovável", texto: "Nenhum sistema popular avisa a população comum. O problema existe e é mensurável." },
-  { titulo: "Timing perfeito", texto: "Estamos no pico do Ciclo Solar 25 em 2026. A relevância é máxima agora." },
+  { titulo: "Relevância atual", texto: "Estamos em um período de alta atividade solar, o que torna o acompanhamento mais importante." },
 ];
 
 export default function Beneficios() {
@@ -37,6 +37,9 @@ export default function Beneficios() {
       <h2 className="mt-12 font-display text-2xl text-alerta-laranja">
         Diferenciais do projeto
       </h2>
+      <p className="mt-2 max-w-3xl text-sm text-slate-300">
+        Além de facilitar a leitura dos dados, o projeto aproxima informações técnicas de clima espacial do cotidiano das pessoas.
+      </p>
       <div className="mt-5 grid gap-5 sm:grid-cols-2">
         {diferenciais.map((d) => (
           <div key={d.titulo} className="rounded-xl border-l-4 border-alerta-laranja bg-space-800 p-5">

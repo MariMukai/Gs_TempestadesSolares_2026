@@ -8,7 +8,7 @@ export default function Footer() {
       </p>
       
       <p className="mt-3 text-xs text-slate-500">
-        Dados: NOAA Space Weather Prediction Center
+        Dados técnicos obtidos pela NOAA Space Weather Prediction Center.
       </p>
     </footer>
   );

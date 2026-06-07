@@ -85,8 +85,14 @@ export default function Header() {
           ))}
         </ul>
 
-        {menuAberto && (
-          <ul className="w-full space-y-2 border-t border-space-600 pt-3 md:hidden">
+        <div
+          className={`w-full origin-top overflow-hidden transition-all duration-300 ease-out md:hidden ${
+            menuAberto
+              ? "max-h-96 translate-y-0 scale-100 border-t border-space-600 pt-3 opacity-100"
+              : "pointer-events-none max-h-0 -translate-y-2 scale-95 opacity-0"
+          }`}
+        >
+          <ul className="space-y-2">
             {paginas.map((p) => (
               <li key={p.rota}>
                 <NavLink
@@ -105,7 +111,7 @@ export default function Header() {
               </li>
             ))}
           </ul>
-        )}
+        </div>
       </nav>
     </header>
   );

@@ -54,6 +54,30 @@ export default function Objetivos() {
         ))}
       </div>
 
+      <h2 className="mt-12 font-display text-2xl text-alerta-laranja">
+        Para quem é útil?
+      </h2>
+      <div className="mt-5 grid gap-5 md:grid-cols-3">
+        <div className="min-w-0 rounded-xl border border-space-600 bg-space-800 p-5">
+          <h3 className="font-display text-lg text-slate-100">Pessoas comuns</h3>
+          <p className="mt-2 text-sm text-slate-300">
+            Para entender alertas solares sem precisar interpretar dados técnicos.
+          </p>
+        </div>
+        <div className="min-w-0 rounded-xl border border-space-600 bg-space-800 p-5">
+          <h3 className="font-display text-lg text-slate-100">Profissionais e estudantes</h3>
+          <p className="mt-2 text-sm text-slate-300">
+            Para acompanhar indicadores e compreender possíveis impactos tecnológicos.
+          </p>
+        </div>
+        <div className="min-w-0 rounded-xl border border-space-600 bg-space-800 p-5">
+          <h3 className="font-display text-lg text-slate-100">Serviços essenciais</h3>
+          <p className="mt-2 text-sm text-slate-300">
+            Para entender como eventos intensos podem afetar navegação, comunicação e energia.
+          </p>
+        </div>
+      </div>
+
       <div className="mt-10 rounded-xl border border-space-600 bg-space-800 p-6">
         <h2 className="font-display text-xl text-slate-100">Nosso objetivo central</h2>
         <p className="mt-3 max-w-3xl text-slate-300">
