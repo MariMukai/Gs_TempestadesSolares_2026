@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { classesPorCor } from "../utils/classificar.js";
+import { adicionarRegistroHistorico } from "../utils/historico.js";
 import {
   NIVEIS_SIMULAVEIS,
   simularTempestade,
@@ -25,6 +26,16 @@ export default function SimuladorTempestade() {
 
     setErro(null);
     setResultado(simulacao);
+    adicionarRegistroHistorico({
+      tipo: "Simulação educativa",
+      origem: "Simulador",
+      kp: simulacao.kp,
+      nivel: simulacao.classificacaoTempestade.nivel,
+      cor: simulacao.classificacaoTempestade.cor,
+      descricao: simulacao.classificacaoTempestade.descricao,
+      velocidade: simulacao.velocidade,
+      tempoChegada: simulacao.tempoChegada,
+    });
   }
 
   const classificacao = resultado?.classificacaoTempestade;
