@@ -5,5 +5,5 @@ export default defineConfig({
   plugins: [react()],
   // IMPORTANTE para o deploy no GitHub Pages:
   // troque "solar-alert" pelo nome EXATO do seu repositorio.
-  base: "/solar-alert/",
+   base: "/",
 });
