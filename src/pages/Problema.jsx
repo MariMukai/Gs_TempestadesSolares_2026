@@ -27,11 +27,13 @@ export default function Problema() {
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState(false);
   const [leituraSalva, setLeituraSalva] = useState(false);
+  const [mostrarTodasLeituras, setMostrarTodasLeituras] = useState(false);
 
   async function carregarDados() {
     setCarregando(true);
     setErro(false);
     setLeituraSalva(false);
+    setMostrarTodasLeituras(false);
 
     try {
       const [dadosAlertas, ventoAtual, bzAtual] = await Promise.all([
@@ -66,6 +68,9 @@ export default function Problema() {
 
   const leituraAtual = alertas[0];
   const leiturasRecentes = alertas.slice(1);
+  const leiturasVisiveis = mostrarTodasLeituras
+    ? leiturasRecentes
+    : leiturasRecentes.slice(0, 6);
   const classesLeituraAtual = leituraAtual ? classesPorCor[leituraAtual.cor] : null;
   const textoOrigem = origem === "noaa"
     ? "NOAA ao vivo"
@@ -230,8 +235,8 @@ export default function Problema() {
                 <h3 className="mt-12 break-words font-display text-xl text-slate-100">
                   Leituras recentes de Kp
                 </h3>
-                <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {leiturasRecentes.map((alerta, i) => (
+                <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+                  {leiturasVisiveis.map((alerta, i) => (
                     <div
                       key={`${alerta.horario}-${i}`}
                       className="animate-surgir opacity-0"
@@ -241,6 +246,17 @@ export default function Problema() {
                     </div>
                   ))}
                 </div>
+                {leiturasRecentes.length > 6 && (
+                  <button
+                    type="button"
+                    onClick={() => setMostrarTodasLeituras((mostrar) => !mostrar)}
+                    className="mt-5 rounded-lg border border-alerta-laranja px-5 py-2 font-display text-sm text-alerta-laranja transition-opacity hover:opacity-70"
+                  >
+                    {mostrarTodasLeituras
+                      ? "Mostrar menos leituras"
+                      : "Mostrar mais leituras"}
+                  </button>
+                )}
               </>
             )}
           </>
